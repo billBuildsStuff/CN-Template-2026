@@ -1,0 +1,22 @@
+/**
+ * Editor-only styles. Loaded inside Gutenberg via add_editor_style().
+ * Keeps the editing experience close to the frontend.
+ */
+
+.editor-styles-wrapper {
+	font-family: var(--font-primary);
+	color: var(--color-text);
+}
+
+/* Match frontend content width */
+.editor-styles-wrapper .wp-block {
+	max-width: var(--container-max);
+}
+
+.editor-styles-wrapper .wp-block[data-align='wide'] {
+	max-width: var(--container-wide);
+}
+
+.editor-styles-wrapper .wp-block[data-align='full'] {
+	max-width: none;
+}

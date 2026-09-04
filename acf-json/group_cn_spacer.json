@@ -1,0 +1,52 @@
+{
+    "key": "group_cn_spacer",
+    "title": "Block: Spacer",
+    "fields": [
+        {
+            "key": "field_cn_spacer_size",
+            "label": "Size",
+            "name": "size",
+            "type": "select",
+            "instructions": "Amount of vertical spacing.",
+            "choices": {
+                "sm": "Small",
+                "md": "Medium",
+                "lg": "Large",
+                "xl": "Extra Large",
+                "2xl": "2X Large"
+            },
+            "default_value": "lg"
+        },
+        {
+            "key": "field_cn_spacer_size_mobile",
+            "label": "Mobile Size",
+            "name": "size_mobile",
+            "type": "select",
+            "instructions": "Optional different spacing on mobile.",
+            "choices": {
+                "": "Same as desktop",
+                "sm": "Small",
+                "md": "Medium",
+                "lg": "Large",
+                "xl": "Extra Large",
+                "2xl": "2X Large"
+            },
+            "allow_null": true
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/spacer"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

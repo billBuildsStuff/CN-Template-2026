@@ -1,0 +1,45 @@
+{
+    "key": "group_cn_gravity_form",
+    "title": "Block: Gravity Form",
+    "fields": [
+        {
+            "key": "field_cn_gform_heading",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "Optional heading above the form.",
+            "placeholder": "Get in touch"
+        },
+        {
+            "key": "field_cn_gform_intro",
+            "label": "Intro Text",
+            "name": "intro",
+            "type": "textarea",
+            "instructions": "Optional introductory copy.",
+            "rows": 2
+        },
+        {
+            "key": "field_cn_gform_form_id",
+            "label": "Form",
+            "name": "form_id",
+            "type": "select",
+            "instructions": "Choose a Gravity Form to display.",
+            "allow_null": true
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/gravity-form"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

@@ -1,0 +1,27 @@
+{
+	"name": "acf/logo-wall",
+	"title": "Logo Wall",
+	"description": "A responsive grid of client or partner logos.",
+	"category": "cn-cards",
+	"icon": "smiley",
+	"keywords": [ "logo" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"_is_example": true
+			}
+		}
+	}
+}

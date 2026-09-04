@@ -1,0 +1,103 @@
+{
+	"ACF Block render.php": {
+		"prefix": "cnblock",
+		"body": [
+			"<?php",
+			"/**",
+			" * ${1:Block Title} block.",
+			" *",
+			" * @param array  \\$block      Block settings and attributes.",
+			" * @param bool   \\$is_preview True during backend preview render.",
+			" */",
+			"",
+			"\\$attrs   = cn_block_attrs( \\$block, '${2:slug}' );",
+			"\\$heading = get_field( 'heading' );",
+			"",
+			"if ( ! \\$heading && \\$is_preview ) {",
+			"\tcn_block_placeholder( '${1:Block Title}' );",
+			"\treturn;",
+			"}",
+			"?>",
+			"<section id=\"<?php echo \\$attrs['id']; ?>\" class=\"<?php echo \\$attrs['class']; ?>\">",
+			"\t<div class=\"${2:slug}__container container\">",
+			"\t\t<?php if ( \\$heading ) : ?>",
+			"\t\t\t<h2 class=\"${2:slug}__heading\"><?php echo esc_html( \\$heading ); ?></h2>",
+			"\t\t<?php endif; ?>",
+			"\t</div>",
+			"</section>"
+		],
+		"description": "ACF block render.php template with CN Starter helpers"
+	},
+	"ACF Block block.json": {
+		"prefix": "cnblockjson",
+		"body": [
+			"{",
+			"\t\"name\": \"acf/${1:slug}\",",
+			"\t\"title\": \"${2:Block Title}\",",
+			"\t\"description\": \"${3:Description}\",",
+			"\t\"category\": \"cn-blocks\",",
+			"\t\"icon\": \"${4:smiley}\",",
+			"\t\"keywords\": [\"${5:keyword}\"],",
+			"\t\"apiVersion\": 2,",
+			"\t\"acf\": { \"mode\": \"preview\", \"renderTemplate\": \"render.php\" },",
+			"\t\"style\": \"file:./style.css\",",
+			"\t\"supports\": { \"align\": [\"wide\",\"full\"], \"anchor\": true, \"jsx\": false },",
+			"\t\"example\": { \"attributes\": { \"mode\": \"preview\", \"data\": { \"_is_example\": true } } }",
+			"}"
+		],
+		"description": "block.json for a CN Starter ACF block"
+	},
+	"BEM CSS block": {
+		"prefix": "cnblockcss",
+		"body": [
+			"/**",
+			" * ${1:Block Title} styles.",
+			" */",
+			"",
+			".${2:slug} {",
+			"\tpadding-block: var(--space-xl);",
+			"}",
+			"",
+			".${2:slug}__heading {",
+			"\tmargin-bottom: var(--space-md);",
+			"}",
+			"",
+			".${2:slug}--modifier {",
+			"\t/* variant styles */",
+			"}",
+			"",
+			"@media (min-width: 768px) {",
+			"\t.${2:slug} { padding-block: var(--space-2xl); }",
+			"}"
+		],
+		"description": "BEM CSS template for a CN Starter block"
+	},
+	"InnerBlocks template": {
+		"prefix": "cninner",
+		"body": [
+			"\\$template = array(",
+			"\tarray( 'core/heading', array( 'level' => 2, 'placeholder' => 'Heading…' ) ),",
+			"\tarray( 'core/paragraph', array( 'placeholder' => 'Content…' ) ),",
+			");",
+			"?>",
+			"<InnerBlocks template=\"<?php echo esc_attr( wp_json_encode( \\$template ) ); ?>\" />"
+		],
+		"description": "InnerBlocks template array for nested content blocks"
+	},
+	"ACF Repeater loop": {
+		"prefix": "cnrepeater",
+		"body": [
+			"\\$items = get_field( '${1:items}' );",
+			"if ( \\$items ) :",
+			"\tforeach ( \\$items as \\$item ) :",
+			"\t\t?>",
+			"\t\t<div class=\"${2:slug}__item\">",
+			"\t\t\t<?php echo esc_html( \\$item['${3:field}'] ?? '' ); ?>",
+			"\t\t</div>",
+			"\t\t<?php",
+			"\tendforeach;",
+			"endif;"
+		],
+		"description": "ACF repeater field loop"
+	}
+}

@@ -1,0 +1,38 @@
+{
+    "key": "group_cn_logo_wall",
+    "title": "Block: Logo Wall",
+    "fields": [
+        {
+            "key": "field_cn_logo_wall_heading",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "Optional section heading.",
+            "placeholder": "Our Partners"
+        },
+        {
+            "key": "field_cn_logo_wall_logos",
+            "label": "Logos",
+            "name": "logos",
+            "type": "gallery",
+            "instructions": "Select logo images.",
+            "return_format": "array",
+            "preview_size": "medium"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/logo-wall"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

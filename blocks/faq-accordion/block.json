@@ -1,0 +1,28 @@
+{
+	"name": "acf/faq-accordion",
+	"title": "FAQ Accordion",
+	"description": "Expandable question & answer list. Accessible, keyboard-friendly.",
+	"category": "cn-content",
+	"icon": "editor-help",
+	"keywords": [ "faq", "accordion", "questions" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "Frequently asked questions",
+				"_is_example": true
+			}
+		}
+	}
+}

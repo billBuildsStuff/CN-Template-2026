@@ -1,0 +1,30 @@
+/**
+ * Spacer block.
+ */
+
+.spacer--sm { height: var(--space-sm); }
+.spacer--md { height: var(--space-md); }
+.spacer--lg { height: var(--space-lg); }
+.spacer--xl { height: var(--space-xl); }
+.spacer--2xl { height: var(--space-2xl); }
+
+@media (max-width: 767px) {
+	.spacer--mobile-sm { height: var(--space-sm); }
+	.spacer--mobile-md { height: var(--space-md); }
+	.spacer--mobile-lg { height: var(--space-lg); }
+	.spacer--mobile-xl { height: var(--space-xl); }
+}
+
+/* Editor visualization */
+.spacer--preview {
+	display: grid;
+	place-items: center;
+	background: repeating-linear-gradient(45deg, #f0f0f0, #f0f0f0 8px, #fafafa 8px, #fafafa 16px);
+	border-radius: 2px;
+}
+
+.spacer__label {
+	font-size: 10px;
+	color: #999;
+	letter-spacing: 0.1em;
+}

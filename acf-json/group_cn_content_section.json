@@ -1,0 +1,43 @@
+{
+    "key": "group_cn_content_section",
+    "title": "Block: Content Section",
+    "fields": [
+        {
+            "key": "field_cn_content_section_image",
+            "label": "Image",
+            "name": "image",
+            "type": "image",
+            "instructions": "Image for the media column.",
+            "return_format": "array",
+            "preview_size": "large"
+        },
+        {
+            "key": "field_cn_content_section_image_position",
+            "label": "Image Position",
+            "name": "image_position",
+            "type": "select",
+            "instructions": "Which side should the image appear on?",
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": "left",
+            "allow_null": false
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/content-section"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

@@ -1,0 +1,75 @@
+{
+    "key": "group_cn_hero",
+    "title": "Block: Hero",
+    "fields": [
+        {
+            "key": "field_cn_hero_heading",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "Main headline for the hero section.",
+            "required": 1,
+            "placeholder": "Bold ideas, delivered."
+        },
+        {
+            "key": "field_cn_hero_subheading",
+            "label": "Subheading",
+            "name": "subheading",
+            "type": "text",
+            "instructions": "Supporting copy below the heading.",
+            "placeholder": "A short tagline or description."
+        },
+        {
+            "key": "field_cn_hero_cta_text",
+            "label": "CTA Text",
+            "name": "cta_text",
+            "type": "text",
+            "instructions": "Button label for the call-to-action.",
+            "placeholder": "Get Started"
+        },
+        {
+            "key": "field_cn_hero_cta_link",
+            "label": "CTA Link",
+            "name": "cta_link",
+            "type": "link",
+            "instructions": "Destination URL for the CTA button.",
+            "return_format": "array"
+        },
+        {
+            "key": "field_cn_hero_background_image",
+            "label": "Background Image",
+            "name": "background_image",
+            "type": "image",
+            "instructions": "Optional full-width background image.",
+            "return_format": "array",
+            "preview_size": "cn-hero"
+        },
+        {
+            "key": "field_cn_hero_overlay_opacity",
+            "label": "Overlay Opacity",
+            "name": "overlay_opacity",
+            "type": "range",
+            "instructions": "Darkness of the overlay over the background image (0-100).",
+            "default_value": 40,
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "append": "%"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/hero"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

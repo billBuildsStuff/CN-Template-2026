@@ -1,0 +1,38 @@
+/**
+ * Logo Wall styles. BEM, mobile-first.
+ * Auto-enqueued only on pages that use this block.
+ */
+
+.logo-wall {
+	padding-block: var(--space-xl);
+}
+
+.logo-wall__heading {
+	margin-bottom: var(--space-md);
+}
+
+.logo-wall__grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-lg);
+}
+
+.logo-wall__item img {
+	max-height: 80px;
+	width: auto;
+	object-fit: contain;
+	opacity: 0.7;
+	transition: opacity 0.2s;
+}
+
+.logo-wall__item:hover img {
+	opacity: 1;
+}
+
+@media (min-width: 768px) {
+	.logo-wall {
+		padding-block: var(--space-2xl);
+	}
+}

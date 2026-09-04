@@ -1,0 +1,29 @@
+{
+	"name": "acf/cards-grid",
+	"title": "Cards Grid",
+	"description": "Grid of feature/service cards with icon, title, text, and optional link.",
+	"category": "cn-cards",
+	"icon": "grid-view",
+	"keywords": [ "cards", "features", "services", "grid" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "What we do",
+				"columns": "3",
+				"_is_example": true
+			}
+		}
+	}
+}

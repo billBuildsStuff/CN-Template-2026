@@ -1,0 +1,27 @@
+{
+	"name": "acf/content-section",
+	"title": "Content Section",
+	"description": "Image + nested content in a two-column layout. Image position switchable.",
+	"category": "cn-content",
+	"icon": "align-pull-left",
+	"keywords": [ "content", "image", "text", "section" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": true
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"_is_example": true
+			}
+		}
+	}
+}

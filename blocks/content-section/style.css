@@ -1,0 +1,39 @@
+/**
+ * Content Section block.
+ */
+
+.content-section {
+	padding-block: var(--space-xl);
+}
+
+.content-section__container {
+	display: grid;
+	gap: var(--space-lg);
+}
+
+.content-section__image {
+	border-radius: var(--radius-md);
+	width: 100%;
+	object-fit: cover;
+}
+
+.content-section__image-placeholder {
+	display: grid;
+	place-items: center;
+	min-height: 240px;
+	border: 2px dashed var(--color-border);
+	border-radius: var(--radius-md);
+	color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+	.content-section__container {
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		gap: var(--space-xl);
+	}
+
+	.content-section--image-right .content-section__media {
+		order: 2;
+	}
+}

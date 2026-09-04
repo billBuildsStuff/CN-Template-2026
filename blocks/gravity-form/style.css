@@ -1,0 +1,37 @@
+/**
+ * Gravity Form block. Base wrapper styles; Gravity Forms markup
+ * inherits the theme's form element styles from base.css.
+ */
+
+.gform-block {
+	padding-block: var(--space-xl);
+}
+
+.gform-block__heading {
+	text-align: center;
+}
+
+.gform-block__intro {
+	text-align: center;
+	margin-bottom: var(--space-lg);
+}
+
+/* Gravity Forms tweaks to match the design system */
+.gform-block .gform_wrapper .gfield {
+	margin-bottom: var(--space-md);
+}
+
+.gform-block .gform_wrapper .gform_button {
+	background-color: var(--color-primary);
+	color: var(--color-text-inverse);
+	border: 0;
+	border-radius: var(--radius-sm);
+	padding: var(--space-sm) var(--space-lg);
+	font-weight: var(--font-weight-medium);
+	cursor: pointer;
+	transition: background-color var(--transition-fast);
+}
+
+.gform-block .gform_wrapper .gform_button:hover {
+	background-color: var(--color-primary-dark);
+}

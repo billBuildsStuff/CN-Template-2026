@@ -1,0 +1,28 @@
+{
+	"name": "acf/team-grid",
+	"title": "Team Grid",
+	"description": "Grid of team member cards: photo, name, title, and optional bio.",
+	"category": "cn-cards",
+	"icon": "groups",
+	"keywords": [ "team", "people", "staff" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "Meet the team",
+				"_is_example": true
+			}
+		}
+	}
+}

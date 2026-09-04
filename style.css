@@ -1,0 +1,21 @@
+/*
+Theme Name: CN Starter
+Theme URI: https://chernoffnewman.com
+Author: Chernoff Newman
+Author URI: https://chernoffnewman.com
+Description: Agency WordPress theme boilerplate with ACF Pro blocks, Figma design-token integration, guided setup wizard, and developer tooling. Built by Chernoff Newman. No build steps required.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: cn-starter
+Tags: blocks, custom-blocks, acf, boilerplate, full-site-editing, custom-colors, custom-menu, featured-images, translation-ready
+*/
+
+/*
+ * All theme styles are enqueued from /assets/css/.
+ * This file exists for the required theme header only.
+ * See /docs/getting-started.md for the CSS architecture.
+ */

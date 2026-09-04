@@ -1,0 +1,28 @@
+{
+	"name": "acf/gravity-form",
+	"title": "Gravity Form",
+	"description": "Embed a Gravity Form with optional heading and intro copy.",
+	"category": "cn-forms",
+	"icon": "feedback",
+	"keywords": [ "form", "contact", "gravity" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "Get in touch",
+				"_is_example": true
+			}
+		}
+	}
+}

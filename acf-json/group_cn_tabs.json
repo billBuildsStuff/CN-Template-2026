@@ -1,0 +1,50 @@
+{
+    "key": "group_cn_tabs",
+    "title": "Block: Tabs",
+    "fields": [
+        {
+            "key": "field_cn_tabs_tabs",
+            "label": "Tabs",
+            "name": "tabs",
+            "type": "repeater",
+            "instructions": "Add one tab per row.",
+            "button_label": "Add Tab",
+            "min": 1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_cn_tab_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "Tab title"
+                },
+                {
+                    "key": "field_cn_tab_content",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "wysiwyg",
+                    "required": 1,
+                    "rows": 6,
+                    "media_upload": true
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/tabs"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

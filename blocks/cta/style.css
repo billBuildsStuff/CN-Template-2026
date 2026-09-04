@@ -1,0 +1,37 @@
+/**
+ * Call to Action block.
+ */
+
+.cta {
+	padding-block: var(--space-xl);
+	background: var(--color-surface);
+	text-align: center;
+}
+
+.cta__container {
+	max-width: var(--container-narrow);
+}
+
+.cta__heading--placeholder {
+	opacity: 0.4;
+}
+
+.cta__body {
+	margin-bottom: var(--space-lg);
+}
+
+/* Style variation: inverse */
+.cta--inverse {
+	background: var(--color-secondary);
+	color: var(--color-text-inverse);
+}
+
+.cta--inverse .cta__heading {
+	color: var(--color-text-inverse);
+}
+
+@media (min-width: 768px) {
+	.cta {
+		padding-block: var(--space-2xl);
+	}
+}

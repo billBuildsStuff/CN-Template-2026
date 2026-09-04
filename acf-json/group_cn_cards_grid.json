@@ -1,0 +1,85 @@
+{
+    "key": "group_cn_cards_grid",
+    "title": "Block: Cards Grid",
+    "fields": [
+        {
+            "key": "field_cn_cards_grid_heading",
+            "label": "Heading",
+            "name": "heading",
+            "type": "text",
+            "instructions": "Optional section heading.",
+            "placeholder": "Our Services"
+        },
+        {
+            "key": "field_cn_cards_grid_columns",
+            "label": "Columns",
+            "name": "columns",
+            "type": "select",
+            "instructions": "Number of columns in the grid.",
+            "choices": {
+                "2": "2 Columns",
+                "3": "3 Columns",
+                "4": "4 Columns"
+            },
+            "default_value": "3"
+        },
+        {
+            "key": "field_cn_cards_grid_cards",
+            "label": "Cards",
+            "name": "cards",
+            "type": "repeater",
+            "instructions": "Add one card per row.",
+            "button_label": "Add Card",
+            "min": 1,
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_cn_card_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "type": "image",
+                    "return_format": "array",
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_cn_card_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1,
+                    "placeholder": "Card title"
+                },
+                {
+                    "key": "field_cn_card_text",
+                    "label": "Text",
+                    "name": "text",
+                    "type": "textarea",
+                    "rows": 3,
+                    "placeholder": "A short description."
+                },
+                {
+                    "key": "field_cn_card_link",
+                    "label": "Link",
+                    "name": "link",
+                    "type": "link",
+                    "return_format": "array"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/cards-grid"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

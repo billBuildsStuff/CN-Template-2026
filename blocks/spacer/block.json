@@ -1,0 +1,28 @@
+{
+	"name": "acf/spacer",
+	"title": "Spacer",
+	"description": "Vertical spacing using the theme's spacing scale, with a mobile override.",
+	"category": "cn-layout",
+	"icon": "image-flip-vertical",
+	"keywords": [ "spacer", "gap", "spacing" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": false,
+		"anchor": false,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"size": "lg",
+				"_is_example": true
+			}
+		}
+	}
+}

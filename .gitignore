@@ -1,0 +1,17 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Local by Flywheel / WordPress core
+# (This repo is the theme only — WP core is not included)
+
+# Logs
+*.log
+debug.log

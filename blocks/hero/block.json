@@ -1,0 +1,36 @@
+{
+	"name": "acf/hero",
+	"title": "Hero",
+	"description": "Full-width hero with heading, subheading, CTA, and background image.",
+	"category": "cn-hero",
+	"icon": "cover-image",
+	"keywords": [ "hero", "banner", "header" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "centered", "label": "Centered" },
+		{ "name": "split", "label": "Split Layout" }
+	],
+	"supports": {
+		"align": [ "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "Bold ideas, delivered.",
+				"subheading": "A hero section with headline, supporting copy, and a call to action.",
+				"cta_text": "Get Started",
+				"cta_link": "#",
+				"_is_example": true
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+{
+    "key": "group_cn_image_gallery",
+    "title": "Block: Image Gallery",
+    "fields": [
+        {
+            "key": "field_cn_gallery_images",
+            "label": "Images",
+            "name": "images",
+            "type": "gallery",
+            "instructions": "Select images for the gallery.",
+            "return_format": "array",
+            "preview_size": "cn-card"
+        },
+        {
+            "key": "field_cn_gallery_columns",
+            "label": "Columns",
+            "name": "columns",
+            "type": "select",
+            "instructions": "Number of columns in the grid.",
+            "choices": {
+                "2": "2 Columns",
+                "3": "3 Columns",
+                "4": "4 Columns"
+            },
+            "default_value": "3"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/image-gallery"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1788541088
+}

@@ -1,0 +1,38 @@
+/**
+ * Tabs block.
+ */
+
+.tabs {
+	padding-block: var(--space-xl);
+}
+
+.tabs__nav {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-xs);
+	border-bottom: 2px solid var(--color-border);
+	margin-bottom: var(--space-lg);
+}
+
+.tabs__button {
+	padding: var(--space-sm) var(--space-md);
+	background: none;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -2px;
+	font-size: var(--font-size-base);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-text-muted);
+	cursor: pointer;
+	width: auto;
+	transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tabs__button:hover {
+	color: var(--color-text);
+}
+
+.tabs__button.is-active {
+	color: var(--color-primary);
+	border-bottom-color: var(--color-primary);
+}

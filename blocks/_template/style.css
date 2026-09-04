@@ -1,0 +1,18 @@
+/**
+ * CN_BLOCK_TITLE styles. BEM, mobile-first.
+ * Auto-enqueued only on pages that use this block.
+ */
+
+.block-slug {
+	padding-block: var(--space-xl);
+}
+
+.block-slug__heading {
+	margin-bottom: var(--space-md);
+}
+
+@media (min-width: 768px) {
+	.block-slug {
+		padding-block: var(--space-2xl);
+	}
+}

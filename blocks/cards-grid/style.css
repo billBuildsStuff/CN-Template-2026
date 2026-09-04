@@ -1,0 +1,63 @@
+/**
+ * Cards Grid block.
+ */
+
+.cards-grid {
+	padding-block: var(--space-xl);
+}
+
+.cards-grid__heading {
+	text-align: center;
+	margin-bottom: var(--space-lg);
+}
+
+.cards-grid__grid {
+	display: grid;
+	gap: var(--space-lg);
+}
+
+.card {
+	display: block;
+	padding: var(--space-lg);
+	background: var(--color-background);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	text-decoration: none;
+	color: inherit;
+	transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+a.card:hover {
+	box-shadow: var(--shadow-md);
+	transform: translateY(-2px);
+	color: inherit;
+}
+
+.card__icon img {
+	width: 48px;
+	height: 48px;
+	object-fit: contain;
+	margin-bottom: var(--space-md);
+}
+
+.card__title {
+	margin-bottom: var(--space-sm);
+}
+
+.card__text {
+	color: var(--color-text-muted);
+	margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+	.cards-grid__grid--cols-2,
+	.cards-grid__grid--cols-3,
+	.cards-grid__grid--cols-4 {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 1024px) {
+	.cards-grid__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+	.cards-grid__grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+}

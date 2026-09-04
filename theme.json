@@ -1,0 +1,68 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"layout": {
+			"contentSize": "1200px",
+			"wideSize": "1400px"
+		},
+		"color": {
+			"custom": false,
+			"customGradient": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{ "slug": "cn-green", "name": "CN Green", "color": "var(--color-primary)" },
+				{ "slug": "cn-vert", "name": "CN Vert", "color": "var(--color-primary-light)" },
+				{ "slug": "cn-black", "name": "CN Black", "color": "var(--color-secondary)" },
+				{ "slug": "cn-white", "name": "CN White", "color": "var(--color-background)" },
+				{ "slug": "grey-1", "name": "Grey 1", "color": "var(--color-border)" },
+				{ "slug": "grey-2", "name": "Grey 2", "color": "var(--color-text-muted)" },
+				{ "slug": "grey-3", "name": "Grey 3", "color": "var(--color-surface-dark)" }
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"fontSizes": [
+				{ "slug": "small", "name": "Small", "size": "var(--font-size-xs)" },
+				{ "slug": "medium", "name": "Medium", "size": "var(--font-size-sm)" },
+				{ "slug": "large", "name": "Large", "size": "var(--font-size-base)" },
+				{ "slug": "x-large", "name": "XL", "size": "var(--font-size-lg)" },
+				{ "slug": "xx-large", "name": "2XL", "size": "var(--font-size-xl)" },
+				{ "slug": "huge", "name": "3XL", "size": "var(--font-size-2xl)" }
+			],
+			"fontFamilies": [
+				{ "slug": "gotham", "name": "Gotham", "fontFamily": "var(--font-primary)" },
+				{ "slug": "calluna", "name": "Calluna", "fontFamily": "var(--font-secondary)" }
+			]
+		},
+		"spacing": {
+			"units": [ "px", "rem", "%", "vh", "vw" ],
+			"spacingSizes": [
+				{ "slug": "xs", "name": "XS", "size": "var(--space-xs)" },
+				{ "slug": "sm", "name": "SM", "size": "var(--space-sm)" },
+				{ "slug": "md", "name": "MD", "size": "var(--space-md)" },
+				{ "slug": "lg", "name": "LG", "size": "var(--space-lg)" },
+				{ "slug": "xl", "name": "XL", "size": "var(--space-xl)" },
+				{ "slug": "2xl", "name": "2XL", "size": "var(--space-2xl)" }
+			]
+		},
+		"blocks": {
+			"core/button": {
+				"border": { "radius": false }
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--color-background)",
+			"text": "var(--color-text)"
+		},
+		"typography": {
+			"fontFamily": "var(--font-primary)",
+			"fontSize": "var(--font-size-sm)",
+			"lineHeight": "var(--line-height-base)"
+		}
+	}
+}

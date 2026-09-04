@@ -1,0 +1,34 @@
+{
+	"name": "acf/cta",
+	"title": "Call to Action",
+	"description": "Attention-grabbing section with heading, text, and button. Supports nested blocks.",
+	"category": "cn-content",
+	"icon": "megaphone",
+	"keywords": [ "cta", "button", "banner" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"styles": [
+		{ "name": "default", "label": "Default", "isDefault": true },
+		{ "name": "inverse", "label": "Inverse (dark)" }
+	],
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": true
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "Ready to work together?",
+				"cta_text": "Contact Us",
+				"cta_link": "#",
+				"_is_example": true
+			}
+		}
+	}
+}

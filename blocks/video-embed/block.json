@@ -1,0 +1,27 @@
+{
+	"name": "acf/video-embed",
+	"title": "Video Embed",
+	"description": "Responsive YouTube/Vimeo embed with optional poster overlay.",
+	"category": "cn-media",
+	"icon": "video-alt3",
+	"keywords": [ "video", "youtube", "vimeo", "embed" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"_is_example": true
+			}
+		}
+	}
+}

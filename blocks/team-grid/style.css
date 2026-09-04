@@ -1,0 +1,58 @@
+/**
+ * Team Grid block.
+ */
+
+.team {
+	padding-block: var(--space-xl);
+}
+
+.team__heading {
+	text-align: center;
+	margin-bottom: var(--space-lg);
+}
+
+.team__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-lg);
+}
+
+.team-member {
+	text-align: center;
+}
+
+.team-member__photo {
+	width: 100%;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: var(--radius-md);
+	margin-bottom: var(--space-md);
+}
+
+.team-member__photo--placeholder {
+	background: var(--color-surface);
+}
+
+.team-member__name {
+	margin-bottom: var(--space-xs);
+	font-size: var(--font-size-lg);
+}
+
+.team-member__role {
+	color: var(--color-primary);
+	font-size: var(--font-size-sm);
+	font-weight: var(--font-weight-medium);
+	margin-bottom: var(--space-sm);
+}
+
+.team-member__bio {
+	color: var(--color-text-muted);
+	font-size: var(--font-size-sm);
+	margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+	.team__grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

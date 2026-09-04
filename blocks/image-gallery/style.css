@@ -1,0 +1,36 @@
+/**
+ * Image Gallery block.
+ */
+
+.gallery {
+	padding-block: var(--space-xl);
+}
+
+.gallery__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-sm);
+}
+
+.gallery__item {
+	display: block;
+	overflow: hidden;
+	border-radius: var(--radius-sm);
+}
+
+.gallery__item img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform var(--transition-base);
+}
+
+.gallery__item:hover img {
+	transform: scale(1.04);
+}
+
+@media (min-width: 768px) {
+	.gallery__grid--cols-3 { grid-template-columns: repeat(3, 1fr); }
+	.gallery__grid--cols-4 { grid-template-columns: repeat(4, 1fr); }
+	.gallery__grid { gap: var(--space-md); }
+}

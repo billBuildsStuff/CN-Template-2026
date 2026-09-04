@@ -1,0 +1,28 @@
+{
+	"name": "acf/testimonials",
+	"title": "Testimonials",
+	"description": "Grid of client quotes with author and photo.",
+	"category": "cn-cards",
+	"icon": "format-quote",
+	"keywords": [ "testimonial", "quote", "review" ],
+	"apiVersion": 2,
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "render.php"
+	},
+	"style": "file:./style.css",
+	"supports": {
+		"align": [ "wide", "full" ],
+		"anchor": true,
+		"jsx": false
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"heading": "What our clients say",
+				"_is_example": true
+			}
+		}
+	}
+}

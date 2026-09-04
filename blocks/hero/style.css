@@ -1,0 +1,69 @@
+/**
+ * Hero block. BEM, mobile-first.
+ */
+
+.hero {
+	position: relative;
+	padding-block: var(--space-xl);
+	background-color: var(--color-surface);
+	background-size: cover;
+	background-position: center;
+	overflow: hidden;
+}
+
+.hero__overlay {
+	position: absolute;
+	inset: 0;
+	background: #000;
+	pointer-events: none;
+}
+
+.hero__container {
+	position: relative;
+	z-index: 1;
+	max-width: var(--container-max);
+}
+
+.hero__heading {
+	font-size: var(--font-size-2xl);
+	margin-bottom: var(--space-sm);
+}
+
+.hero__subheading {
+	font-size: var(--font-size-lg);
+	color: var(--color-text-muted);
+	max-width: 60ch;
+	margin-bottom: var(--space-lg);
+}
+
+.hero--has-image .hero__heading,
+.hero--has-image .hero__subheading {
+	color: var(--color-text-inverse);
+}
+
+/* Style variation: centered */
+.hero--centered .hero__container {
+	text-align: center;
+}
+
+.hero--centered .hero__subheading {
+	margin-inline: auto;
+}
+
+/* Style variation: split */
+@media (min-width: 768px) {
+	.hero {
+		padding-block: var(--space-2xl);
+	}
+
+	.hero__heading {
+		font-size: var(--font-size-3xl);
+	}
+
+	.hero--split .hero__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-xl);
+		align-items: center;
+	}
+}

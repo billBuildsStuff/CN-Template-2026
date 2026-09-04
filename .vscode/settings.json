@@ -1,0 +1,18 @@
+{
+	"files.associations": {
+		"*.php": "php"
+	},
+	"emmet.includeLanguages": {
+		"php": "html"
+	},
+	"php.validate.executablePath": "",
+	"intelephense.environment.phpVersion": "8.0.0",
+	"intelephense.files.maxSize": 5000000,
+	"intelephense.environment.includePaths": [
+		"./"
+	],
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/vendor": true
+	}
+}
