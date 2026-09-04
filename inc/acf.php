@@ -59,52 +59,6 @@ function cn_acf_options_page() {
 add_action( 'acf/init', 'cn_acf_options_page' );
 
 /**
- * Register Build Mode field on the Theme Settings options page.
- */
-function cn_register_build_mode_field() {
-	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
-		return;
-	}
-
-	acf_add_local_field_group( array(
-		'key'      => 'group_cn_build_mode',
-		'title'    => __( 'Build Mode', 'cn-starter' ),
-		'fields'   => array(
-			array(
-				'key'           => 'field_cn_build_mode',
-				'label'         => __( 'Page Building Method', 'cn-starter' ),
-				'name'          => 'cn_build_mode',
-				'type'          => 'select',
-				'instructions'  => __( "Lock the site to one editing approach. 'Blocks' uses the WordPress block editor with CN custom blocks. 'Flexible Layouts' uses a page-builder-style ACF Flexible Content field on every page.", 'cn-starter' ),
-				'required'      => true,
-				'choices'       => array(
-					'blocks'   => __( 'Blocks (WordPress Editor)', 'cn-starter' ),
-					'flexible' => __( 'Flexible Layouts (ACF Page Builder)', 'cn-starter' ),
-				),
-				'default_value' => cn_get_build_mode(),
-				'return_format' => 'value',
-			),
-		),
-		'location' => array(
-			array(
-				array(
-					'param'    => 'options_page',
-					'operator' => '==',
-					'value'    => 'cn-theme-settings',
-				),
-			),
-		),
-		'menu_order'            => 0,
-		'position'              => 'normal',
-		'style'                 => 'default',
-		'label_placement'       => 'top',
-		'instruction_placement' => 'label',
-		'active'                => true,
-	) );
-}
-add_action( 'acf/init', 'cn_register_build_mode_field' );
-
-/**
  * Sync the ACF options field back to the wp_options table so
  * cn_get_build_mode() can read it without ACF being loaded.
  */
@@ -165,6 +119,13 @@ function cn_acf_sync_notice() {
 	$screen = get_current_screen();
 	if ( $screen && 'acf-field-group' === $screen->post_type ) {
 		return; // ACF shows its own sync UI here.
+	}
+
+	// The wizard syncs field groups itself at the starter-content step, so a
+	// warning mid-flow is both redundant and alarming.
+	$current_page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
+	if ( 'cn-setup-wizard' === $current_page ) {
+		return;
 	}
 
 	// Scan the JSON directory directly — ACF's cached file list may be stale

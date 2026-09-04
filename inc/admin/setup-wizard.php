@@ -338,6 +338,19 @@ function cn_wizard_resume_redirect() {
 add_action( 'admin_init', 'cn_wizard_resume_redirect' );
 
 /**
+ * Suppress admin notices from third-party plugins (Yoast, ACF, etc.) on the
+ * wizard page so they don't break the guided flow with distracting warnings.
+ */
+function cn_wizard_suppress_notices() {
+	if ( ! isset( $_GET['page'] ) || 'cn-setup-wizard' !== $_GET['page'] ) {
+		return;
+	}
+	remove_all_actions( 'admin_notices' );
+	remove_all_actions( 'all_admin_notices' );
+}
+add_action( 'admin_head', 'cn_wizard_suppress_notices', 999 );
+
+/**
  * Render the wizard UI.
  */
 function cn_wizard_render() {
@@ -474,13 +487,13 @@ function cn_wizard_step_welcome() {
 		<code>wp cn plugins install</code> <?php esc_html_e( '— install free plugins via WP-CLI. Use --acf-pro=<url> for premium ZIPs.', 'cn-starter' ); ?>
 	</p>
 
-	<p class="cn-wizard__actions">
-		<form method="post" style="display:inline">
-			<?php wp_nonce_field( 'cn_wizard' ); ?>
-			<input type="hidden" name="cn_wizard_step" value="welcome">
+	<form method="post">
+		<?php wp_nonce_field( 'cn_wizard' ); ?>
+		<input type="hidden" name="cn_wizard_step" value="welcome">
+		<p class="cn-wizard__actions">
 			<button class="button button-primary button-hero"><?php esc_html_e( "Let's Get Started", 'cn-starter' ); ?></button>
-		</form>
-	</p>
+		</p>
+	</form>
 
 	<script>
 	jQuery( function ( $ ) {
@@ -576,6 +589,7 @@ function cn_wizard_step_build_mode() {
 		<input type="hidden" name="cn_wizard_step" value="build_mode">
 		<input type="hidden" name="cn_site_type" id="cn_site_type_input" value="<?php echo esc_attr( $site_type ); ?>">
 
+		<p class="cn-eyebrow cn-wizard__group-label"><?php esc_html_e( 'Editing Approach', 'cn-starter' ); ?></p>
 		<div class="cn-wizard__build-mode">
 			<label class="cn-wizard__mode-card<?php echo 'blocks' === $current ? ' is-selected' : ''; ?>">
 				<input type="radio" name="cn_build_mode" value="blocks" <?php checked( $current, 'blocks' ); ?>>
@@ -591,6 +605,7 @@ function cn_wizard_step_build_mode() {
 			</label>
 		</div>
 
+		<p class="cn-eyebrow cn-wizard__group-label"><?php esc_html_e( 'Site Scope', 'cn-starter' ); ?></p>
 		<div class="cn-wizard__site-type">
 			<label class="cn-wizard__site-type-card<?php echo 'full' === $site_type ? ' is-selected' : ''; ?>" data-site-type="full">
 				<span class="cn-wizard__site-type-icon dashicons dashicons-admin-multisite"></span>
@@ -818,7 +833,6 @@ function cn_wizard_step_done() {
 		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-design-tokens' ) ); ?>"><?php esc_html_e( 'Adjust brand colors (Design Tokens)', 'cn-starter' ); ?></a></li>
 		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-figma-tokens' ) ); ?>"><?php esc_html_e( 'Import full Figma design tokens', 'cn-starter' ); ?></a></li>
 		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-docs' ) ); ?>"><?php esc_html_e( 'Read the theme docs', 'cn-starter' ); ?></a></li>
-		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-theme-settings' ) ); ?>"><?php esc_html_e( 'Change build mode (Theme Settings)', 'cn-starter' ); ?></a></li>
 		<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-block-generator' ) ); ?>"><?php esc_html_e( 'Create a new block', 'cn-starter' ); ?></a></li>
 	</ul>
 	<p class="cn-wizard__actions">

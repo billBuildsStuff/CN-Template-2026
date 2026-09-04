@@ -108,20 +108,22 @@ function cn_docs_render() {
 	?>
 	<div class="wrap cn-docs-wrap">
 		<?php cn_admin_page_header( __( 'Theme Documentation', 'cn-starter' ), __( 'Guides and references for building with CN Starter.', 'cn-starter' ) ); ?>
-		<nav class="cn-docs-nav">
-			<h3><?php esc_html_e( 'Documentation', 'cn-starter' ); ?></h3>
-			<ul>
-				<?php foreach ( $docs as $slug => $title ) : ?>
-					<li>
-						<a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-docs&doc=' . $slug ) ); ?>" class="<?php echo $slug === $current ? 'is-active' : ''; ?>">
-							<?php echo esc_html( $title ); ?>
-						</a>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-		</nav>
-		<div class="cn-docs-content">
-			<?php echo wp_kses_post( cn_docs_markdown( $content ) ); // phpcs:ignore -- our own markdown. ?>
+		<div class="cn-docs-grid">
+			<nav class="cn-docs-nav">
+				<h3><?php esc_html_e( 'Documentation', 'cn-starter' ); ?></h3>
+				<ul>
+					<?php foreach ( $docs as $slug => $title ) : ?>
+						<li>
+							<a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-docs&doc=' . $slug ) ); ?>" class="<?php echo $slug === $current ? 'is-active' : ''; ?>">
+								<?php echo esc_html( $title ); ?>
+							</a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</nav>
+			<div class="cn-docs-content">
+				<?php echo wp_kses_post( cn_docs_markdown( $content ) ); // phpcs:ignore -- our own markdown. ?>
+			</div>
 		</div>
 	</div>
 	<?php

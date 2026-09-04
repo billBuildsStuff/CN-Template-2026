@@ -162,16 +162,7 @@ function cn_dashboard_render() {
 	}
 	?>
 	<div class="wrap cn-dashboard">
-		<div class="cn-dashboard__header">
-			<div class="cn-dashboard__brand">
-				<img src="<?php echo esc_url( CN_THEME_URI . '/assets/images/cn-mark.svg' ); ?>" alt="CN" class="cn-dashboard__logo">
-				<div>
-					<h1>Chernoff Newman <span>CN Starter</span></h1>
-					<p>Agency WordPress Theme Boilerplate</p>
-				</div>
-			</div>
-			<div class="cn-dashboard__version">v<?php echo esc_html( CN_THEME_VERSION ); ?></div>
-		</div>
+		<?php cn_admin_page_header( __( 'CN Starter', 'cn-starter' ), __( 'Chernoff Newman — Agency WordPress Theme Boilerplate', 'cn-starter' ) ); ?>
 
 		<div class="cn-dashboard__grid">
 			<!-- Setup Status -->
@@ -192,13 +183,12 @@ function cn_dashboard_render() {
 				<div class="cn-card__body">
 					<h3><?php esc_html_e( 'Build Mode', 'cn-starter' ); ?></h3>
 					<p><?php echo 'blocks' === $build_mode ? esc_html__( 'Blocks (WordPress Editor)', 'cn-starter' ) : esc_html__( 'Flexible Layouts (ACF)', 'cn-starter' ); ?></p>
-					<a href="<?php echo esc_url( admin_url( 'admin.php?page=cn-theme-settings' ) ); ?>" class="cn-card__link"><?php esc_html_e( 'Change mode', 'cn-starter' ); ?> &rarr;</a>
 				</div>
 			</div>
 
 			<!-- Plugins -->
 			<div class="cn-card">
-				<div class="cn-card__icon"><span class="dashicons dashicons-plugins"></span></div>
+				<div class="cn-card__icon"><span class="dashicons dashicons-admin-plugins"></span></div>
 				<div class="cn-card__body">
 					<h3><?php esc_html_e( 'Plugins', 'cn-starter' ); ?></h3>
 					<p><?php echo esc_html( sprintf( __( '%d of %d active', 'cn-starter' ), $active_count, $total_count ) ); ?></p>

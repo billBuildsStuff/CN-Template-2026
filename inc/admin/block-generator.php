@@ -14,10 +14,13 @@ defined( 'ABSPATH' ) || exit;
  * Register the admin page.
  */
 function cn_block_generator_menu() {
+	$label = ( 'flexible' === cn_get_build_mode() )
+		? __( 'Create Layout', 'cn-starter' )
+		: __( 'Create Block', 'cn-starter' );
 	add_submenu_page(
 		'cn-starter',
-		__( 'Create Block', 'cn-starter' ),
-		__( 'Create Block', 'cn-starter' ),
+		$label,
+		$label,
 		'manage_options',
 		'cn-block-generator',
 		'cn_block_generator_render'
@@ -113,12 +116,15 @@ function cn_block_generator_handle() {
 	if ( is_wp_error( $result ) ) {
 		add_settings_error( 'cn_block_gen', 'error', $result->get_error_message() );
 	} else {
+		$is_flex_msg = ( 'flexible' === cn_get_build_mode() );
 		add_settings_error(
 			'cn_block_gen',
 			'created',
 			sprintf(
 				/* translators: %s: block slug */
-				__( 'Block created at /blocks/%s/. Sync the new field group under Custom Fields, then customize render.php and style.css.', 'cn-starter' ),
+				$is_flex_msg
+				? __( 'Section created at /blocks/%s/. Sync the new field group under Custom Fields, then customize render.php and style.css. The section will appear in the page builder automatically.', 'cn-starter' )
+				: __( 'Block created at /blocks/%s/. Sync the new field group under Custom Fields, then customize render.php and style.css.', 'cn-starter' ),
 				sanitize_title( wp_unslash( $_POST['cn_new_block_slug'] ) )
 			),
 			'success'
@@ -131,15 +137,37 @@ add_action( 'admin_init', 'cn_block_generator_handle' );
  * Render the page.
  */
 function cn_block_generator_render() {
+	$mode      = cn_get_build_mode();
+	$is_flex   = ( 'flexible' === $mode );
+	$page_title   = $is_flex ? __( 'Create a New Section', 'cn-starter' ) : __( 'Create a New Block', 'cn-starter' );
+	$page_sub     = $is_flex
+		? __( 'Scaffold a new section type for the Flexible Layout page builder.', 'cn-starter' )
+		: __( 'Scaffold a ready-to-edit ACF block with starter field group.', 'cn-starter' );
+	$intro_text   = $is_flex
+		? __( 'Creates a new section type from the theme template. It will appear in the "Add Section" picker on every page. Includes a starter field group with a heading field.', 'cn-starter' )
+		: __( 'Scaffolds a ready-to-edit ACF block from the theme template, including a starter field group with a heading field.', 'cn-starter' );
+	$mode_label   = $is_flex ? __( 'Flexible Layouts', 'cn-starter' ) : __( 'Blocks', 'cn-starter' );
+	$mode_icon    = $is_flex ? 'dashicons-layout' : 'dashicons-edit-page';
 	?>
 	<div class="wrap cn-block-gen">
-		<?php cn_admin_page_header( __( 'Create a New Block', 'cn-starter' ), __( 'Scaffold a ready-to-edit ACF block with starter field group.', 'cn-starter' ) ); ?>
+		<?php cn_admin_page_header( $page_title, $page_sub ); ?>
 		<?php settings_errors( 'cn_block_gen' ); ?>
+
+		<div class="cn-block-gen__mode-bar">
+			<span class="dashicons <?php echo esc_attr( $mode_icon ); ?>"></span>
+			<?php esc_html_e( 'Current build mode:', 'cn-starter' ); ?>
+			<strong><?php echo esc_html( $mode_label ); ?></strong>
+			<?php if ( $is_flex ) : ?>
+				<span class="cn-block-gen__mode-hint"><?php esc_html_e( 'New sections appear in the page builder "Add Section" picker automatically.', 'cn-starter' ); ?></span>
+			<?php else : ?>
+				<span class="cn-block-gen__mode-hint"><?php esc_html_e( 'New blocks appear in the Gutenberg inserter automatically.', 'cn-starter' ); ?></span>
+			<?php endif; ?>
+		</div>
 
 		<div class="cn-block-gen__grid">
 			<div class="cn-block-gen__main">
 				<div class="cn-block-gen__card">
-					<p class="cn-block-gen__intro"><?php esc_html_e( 'Scaffolds a ready-to-edit ACF block from the theme template, including a starter field group with a heading field.', 'cn-starter' ); ?></p>
+					<p class="cn-block-gen__intro"><?php echo esc_html( $intro_text ); ?></p>
 
 					<form method="post" class="cn-block-gen__form">
 						<?php wp_nonce_field( 'cn_block_generator' ); ?>
@@ -148,7 +176,7 @@ function cn_block_generator_render() {
 								<th><label for="cn_new_block_title"><?php esc_html_e( 'Block Title', 'cn-starter' ); ?></label></th>
 								<td>
 									<input name="cn_new_block_title" id="cn_new_block_title" type="text" class="regular-text" placeholder="Logo Wall" required>
-									<p class="description"><?php esc_html_e( 'Human-readable name shown in the block inserter.', 'cn-starter' ); ?></p>
+									<p class="description"><?php echo esc_html( $is_flex ? __( 'Human-readable name shown in the “Add Section” picker.', 'cn-starter' ) : __( 'Human-readable name shown in the block inserter.', 'cn-starter' ) ); ?></p>
 								</td>
 							</tr>
 							<tr>
@@ -162,7 +190,7 @@ function cn_block_generator_render() {
 								<th><label for="cn_new_block_desc"><?php esc_html_e( 'Description', 'cn-starter' ); ?></label></th>
 								<td>
 									<input name="cn_new_block_desc" id="cn_new_block_desc" type="text" class="regular-text" placeholder="A grid of client logos">
-									<p class="description"><?php esc_html_e( 'Short description shown in the block inserter.', 'cn-starter' ); ?></p>
+									<p class="description"><?php echo esc_html( $is_flex ? __( 'Short description shown in the section picker.', 'cn-starter' ) : __( 'Short description shown in the block inserter.', 'cn-starter' ) ); ?></p>
 								</td>
 							</tr>
 							<tr>
@@ -173,7 +201,7 @@ function cn_block_generator_render() {
 								</td>
 							</tr>
 						</table>
-						<p class="cn-block-gen__submit"><button class="button button-primary button-large"><?php esc_html_e( 'Create Block', 'cn-starter' ); ?></button></p>
+						<p class="cn-block-gen__submit"><button class="button button-primary button-large"><?php echo esc_html( $is_flex ? __( 'Create Section', 'cn-starter' ) : __( 'Create Block', 'cn-starter' ) ); ?></button></p>
 					</form>
 				</div>
 			</div>
@@ -187,6 +215,9 @@ function cn_block_generator_render() {
 						<li><code>blocks/<?php esc_html_e( 'your-slug', 'cn-starter' ); ?>/style.css</code></li>
 						<li><code>acf-json/group_cn_<?php esc_html_e( 'your_slug', 'cn-starter' ); ?>.json</code></li>
 					</ul>
+					<?php if ( $is_flex ) : ?>
+						<p class="cn-block-gen__note"><?php esc_html_e( 'The flexible layout is auto-generated from these files — no separate layout definition needed.', 'cn-starter' ); ?></p>
+					<?php endif; ?>
 				</div>
 				<div class="cn-block-gen__info-card">
 					<h3><span class="dashicons dashicons-editor-code"></span> <?php esc_html_e( 'After Creating', 'cn-starter' ); ?></h3>
@@ -196,6 +227,9 @@ function cn_block_generator_render() {
 						<li><?php esc_html_e( 'Customize render.php with your markup', 'cn-starter' ); ?></li>
 						<li><?php esc_html_e( 'Add styles in style.css (BEM naming)', 'cn-starter' ); ?></li>
 					</ol>
+					<?php if ( $is_flex ) : ?>
+						<p class="cn-block-gen__note"><?php esc_html_e( 'After syncing, the new section appears automatically in the page builder on every page.', 'cn-starter' ); ?></p>
+					<?php endif; ?>
 				</div>
 				<div class="cn-block-gen__info-card">
 					<h3><span class="dashicons dashicons-terminal"></span> <?php esc_html_e( 'Or Use WP-CLI', 'cn-starter' ); ?></h3>
