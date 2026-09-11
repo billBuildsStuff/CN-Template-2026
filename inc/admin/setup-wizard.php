@@ -216,7 +216,7 @@ function cn_wizard_create_starter_content() {
 					'layouts' => array(
 						array( 'acf_fc_layout' => 'hero', 'heading' => $site_name, 'subheading' => $site_desc, 'style' => 'default' ),
 						array( 'acf_fc_layout' => 'content_section', 'image_position' => 'left', 'content' => '<p>Welcome to ' . $site_name . '. Edit this section to tell your story.</p>' ),
-						array( 'acf_fc_layout' => 'cta', 'heading' => 'Ready to get started?', 'content' => '<p>Let\'s create something great together.</p>', 'cta_text' => 'Get Started', 'cta_link' => '#', 'style' => 'default' ),
+						array( 'acf_fc_layout' => 'cta', 'heading' => 'Ready to get started?', 'content' => '<p>Let\'s create something great together.</p>', 'cta_text' => 'Get Started', 'cta_link' => array( 'url' => '#', 'title' => 'Get Started', 'target' => '' ), 'style' => 'default' ),
 					),
 				),
 			);
@@ -225,7 +225,7 @@ function cn_wizard_create_starter_content() {
 				'Home'    => array(
 					'layouts' => array(
 						array( 'acf_fc_layout' => 'hero', 'heading' => $site_name, 'subheading' => $site_desc, 'style' => 'default' ),
-						array( 'acf_fc_layout' => 'cta', 'heading' => 'Ready to get started?', 'content' => '<p>Let\'s create something great together.</p>', 'cta_text' => 'Contact Us', 'cta_link' => home_url( '/contact' ), 'style' => 'default' ),
+						array( 'acf_fc_layout' => 'cta', 'heading' => 'Ready to get started?', 'content' => '<p>Let\'s create something great together.</p>', 'cta_text' => 'Contact Us', 'cta_link' => array( 'url' => home_url( '/contact' ), 'title' => 'Contact Us', 'target' => '' ), 'style' => 'default' ),
 					),
 				),
 				'About'   => array(
@@ -296,10 +296,14 @@ function cn_wizard_create_starter_content() {
 		}
 	}
 
-	$menu_id = wp_create_nav_menu( __( 'Primary', 'cn-starter' ) );
-	if ( is_wp_error( $menu_id ) ) {
-		$menu    = wp_get_nav_menu_object( 'Primary' );
-		$menu_id = $menu ? $menu->term_id : 0;
+	// Only create a nav menu for full sites — landing pages are single-page sites.
+	$menu_id = 0;
+	if ( 'landing' !== $site_type ) {
+		$menu_id = wp_create_nav_menu( __( 'Primary', 'cn-starter' ) );
+		if ( is_wp_error( $menu_id ) ) {
+			$menu    = wp_get_nav_menu_object( 'Primary' );
+			$menu_id = $menu ? $menu->term_id : 0;
+		}
 	}
 
 	foreach ( $pages as $title => $data ) {
