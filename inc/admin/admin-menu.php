@@ -41,6 +41,31 @@ function cn_admin_top_menu() {
 add_action( 'admin_menu', 'cn_admin_top_menu', 5 );
 
 /**
+ * Hide CN Starter submenu pages until the setup wizard is complete.
+ * Only Dashboard and Setup Wizard are visible before setup.
+ */
+function cn_hide_admin_submenus_before_setup() {
+	if ( get_option( 'cn_setup_complete' ) ) {
+		return;
+	}
+
+	global $submenu;
+	if ( ! isset( $submenu['cn-starter'] ) ) {
+		return;
+	}
+
+	$allowed = array( 'cn-starter', 'cn-setup-wizard' );
+
+	foreach ( $submenu['cn-starter'] as $index => $item ) {
+		$slug = $item[2] ?? '';
+		if ( ! in_array( $slug, $allowed, true ) ) {
+			unset( $submenu['cn-starter'][ $index ] );
+		}
+	}
+}
+add_action( 'admin_menu', 'cn_hide_admin_submenus_before_setup', 999 );
+
+/**
  * Force redirect to the setup wizard when setup is not complete.
  * Any CN Starter admin page (except the wizard itself) redirects to the wizard.
  */

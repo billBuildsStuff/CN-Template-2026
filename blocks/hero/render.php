@@ -17,6 +17,9 @@ $cta_link         = get_field( 'cta_link' );
 $background_image = get_field( 'background_image' );
 $overlay_opacity  = get_field( 'overlay_opacity' );
 
+// ACF link field returns an array when return_format is 'array'.
+$cta_url = is_array( $cta_link ) ? ( $cta_link['url'] ?? '' ) : $cta_link;
+
 if ( ! $heading && ! $subheading && $is_preview ) {
 	cn_block_placeholder( __( 'Hero', 'cn-starter' ), __( 'Add a heading and CTA in the block sidebar.', 'cn-starter' ) );
 	return;
@@ -43,8 +46,8 @@ $overlay = is_numeric( $overlay_opacity ) ? max( 0, min( 100, (int) $overlay_opa
 			<p class="hero__subheading"><?php echo esc_html( $subheading ); ?></p>
 		<?php endif; ?>
 
-		<?php if ( $cta_text && $cta_link ) : ?>
-			<a href="<?php echo esc_url( $cta_link ); ?>" class="hero__cta btn btn--primary">
+		<?php if ( $cta_text && $cta_url ) : ?>
+			<a href="<?php echo esc_url( $cta_url ); ?>" class="hero__cta btn btn--primary">
 				<?php echo esc_html( $cta_text ); ?>
 			</a>
 		<?php endif; ?>

@@ -15,6 +15,9 @@ $heading  = get_field( 'heading' );
 $cta_text = get_field( 'cta_text' );
 $cta_link = get_field( 'cta_link' );
 
+// ACF link field returns an array when return_format is 'array'.
+$cta_url = is_array( $cta_link ) ? ( $cta_link['url'] ?? '' ) : $cta_link;
+
 $inner_template = array(
 	array( 'core/paragraph', array( 'placeholder' => __( 'Add supporting copy…', 'cn-starter' ) ) ),
 );
@@ -32,8 +35,8 @@ $inner_template = array(
 			<InnerBlocks template="<?php echo esc_attr( wp_json_encode( $inner_template ) ); ?>" />
 		</div>
 
-		<?php if ( $cta_text && $cta_link ) : ?>
-			<a href="<?php echo esc_url( $cta_link ); ?>" class="cta__button btn btn--primary">
+		<?php if ( $cta_text && $cta_url ) : ?>
+			<a href="<?php echo esc_url( $cta_url ); ?>" class="cta__button btn btn--primary">
 				<?php echo esc_html( $cta_text ); ?>
 			</a>
 		<?php endif; ?>

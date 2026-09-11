@@ -25,7 +25,7 @@ function cn_populate_gravity_forms_choices( $field ) {
 
 	return $field;
 }
-add_filter( 'acf/load_field/key=field_cn_gf_form_id', 'cn_populate_gravity_forms_choices' );
+add_filter( 'acf/load_field/key=field_cn_gform_form_id', 'cn_populate_gravity_forms_choices' );
 
 /**
  * Let the theme own Gravity Forms styling (uses base.css form styles).

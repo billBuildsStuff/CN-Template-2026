@@ -136,10 +136,20 @@ function cn_acf_block_markup( $slug, $data = array(), $inner = '' ) {
 	);
 
 	// Build the data attribute with field key references.
+	// ACF blocks store data as { field_name => value, _field_name => field_key }.
+	// Without the _-prefixed key references, get_field() can't resolve values.
 	if ( $data ) {
 		$full_data = array();
+
+		// Look up the field group for this block to get field keys.
+		$field_keys = cn_get_block_field_keys( 'acf/' . $slug );
+
 		foreach ( $data as $name => $value ) {
 			$full_data[ $name ] = $value;
+			// Add the field key reference so ACF can resolve the field.
+			if ( isset( $field_keys[ $name ] ) ) {
+				$full_data[ '_' . $name ] = $field_keys[ $name ];
+			}
 		}
 		$attrs['data'] = $full_data;
 	}
@@ -152,6 +162,41 @@ function cn_acf_block_markup( $slug, $data = array(), $inner = '' ) {
 	}
 
 	return "<!-- wp:{$block_name} {$json} /-->";
+}
+
+/**
+ * Get a map of field_name => field_key for a given block.
+ *
+ * Uses cn_get_block_field_groups() (from flexible-layouts.php) to find
+ * the ACF field group targeting this block, then acf_get_fields() to
+ * extract all top-level field keys. For repeater fields, also maps
+ * sub-field keys.
+ *
+ * @param string $block_name Full block name (e.g. 'acf/hero').
+ * @return array [field_name => field_key]
+ */
+function cn_get_block_field_keys( $block_name ) {
+	if ( ! function_exists( 'cn_get_block_field_groups' ) || ! function_exists( 'acf_get_fields' ) ) {
+		return array();
+	}
+
+	$groups = cn_get_block_field_groups();
+	if ( ! isset( $groups[ $block_name ] ) ) {
+		return array();
+	}
+
+	$group  = $groups[ $block_name ];
+	$fields = acf_get_fields( $group['key'] );
+	if ( ! $fields ) {
+		return array();
+	}
+
+	$keys = array();
+	foreach ( $fields as $field ) {
+		$keys[ $field['name'] ] = $field['key'];
+	}
+
+	return $keys;
 }
 
 /**
@@ -206,7 +251,11 @@ function cn_wizard_create_starter_content() {
 		$cta_data = array(
 			'heading'  => 'Ready to get started?',
 			'cta_text' => 'Contact Us',
-			'cta_link' => home_url( '/contact' ),
+			'cta_link' => array(
+				'url'   => home_url( '/contact' ),
+				'title' => 'Contact Us',
+				'target' => '',
+			),
 		);
 
 		$cta_inner = "<!-- wp:paragraph -->\n<p>Let's create something great together.</p>\n<!-- /wp:paragraph -->";
@@ -224,7 +273,11 @@ function cn_wizard_create_starter_content() {
 			$landing_cta_data = array(
 				'heading'  => 'Ready to get started?',
 				'cta_text' => 'Get Started',
-				'cta_link' => '#',
+				'cta_link' => array(
+					'url'   => '#',
+					'title' => 'Get Started',
+					'target' => '',
+				),
 			);
 
 			$pages = array(
@@ -582,7 +635,7 @@ function cn_wizard_step_build_mode() {
 	$site_type = get_option( 'cn_site_type', 'full' );
 	?>
 	<h1><?php esc_html_e( 'Choose Your Build Mode', 'cn-starter' ); ?></h1>
-	<p class="cn-wizard__lead"><?php esc_html_e( 'Lock the site to one editing approach. You can change this later in Theme Settings.', 'cn-starter' ); ?></p>
+	<p class="cn-wizard__lead"><?php esc_html_e( 'Lock the site to one editing approach. This cannot be changed after setup.', 'cn-starter' ); ?></p>
 
 	<form method="post">
 		<?php wp_nonce_field( 'cn_wizard' ); ?>
